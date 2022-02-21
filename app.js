@@ -98,3 +98,59 @@ function start() {
 // function to View all departments,
 function viewDepts() {
     connection.query("SELECT * FROM department", (err, data) => {
+        if (err) throw err;
+        console.log("Displaying all departments:");
+        console.table(data);
+        start();
+    });
+}
+
+// function to View all roles
+function viewRoles() {
+    connection.query("SELECT * FROM role", (err, data) => {
+        if (err) throw err;
+        console.log("Displaying all roles:");
+        console.table(data);
+        start();
+    });
+}
+
+// function to View all employees
+function viewEes() {
+    connection.query("SELECT * FROM employee", (err, data) => {
+        if (err) throw err;
+        console.log("Displaying all employees:");
+        console.table(data);
+        start();
+    });
+}
+
+// function to Add a department
+function addDept() {
+    inquirer.prompt([
+        {
+            name: "department",
+            type: "input",
+            message: "What is the new department name?",
+            validate: (value) => {
+                if (value) {
+                    return true;
+                } else {
+                    console.log("Please enter department name.");
+                }
+            }
+        },
+    ]).then(answer => {
+        connection.query(
+            "INSERT INTO department SET ?",
+            {
+                name: answer.department
+            },
+            (err) => {
+                if (err) throw err;
+                console.log(`New department ${answer.department} has been added!`);
+                start();
+            }
+        );
+    });
+}
