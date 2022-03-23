@@ -1,0 +1,25 @@
+{
+  "name": "employee-management-system",
+  "version": "1.0.0",
+  "description": "![License Badge](https://img.shields.io/github/license/mathewosad/Employee-Management-System) ![Top Language](https://img.shields.io/github/languages/top/mathewosad/Employee-Management-System)",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mathewosad/Employee-Management-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mathewosad/Employee-Management-System/issues"
+  },
+  "homepage": "https://github.com/mathewosad/Employee-Management-System#readme",
+  "dependencies": {
+    "figlet": "^1.5.2",
+    "inquirer": "^8.2.0",
+    "mysql": "^2.18.1"
+  }
+}

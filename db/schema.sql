@@ -42,12 +42,3 @@ FROM employee
 JOIN role 
 ON employee.role_id = role.department_id;
 
-
--- SELECT *
--- FROM department;
-
--- SELECT *
--- FROM role;
-
--- SELECT *
--- FROM employee;

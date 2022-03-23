@@ -19,7 +19,6 @@ A command line application Content Management Systems for managing a company's e
 * The application is invoked by running `node app.js` in the command line
 
 * Follow the prompts to finish application
-  ![Screenshot](./Assets/ee-manager-start.png)
 
 * [Video Demo]()
 
@@ -33,7 +32,6 @@ A command line application Content Management Systems for managing a company's e
 * MySQL
 * npm packages
   * Inquirer
-  * Figlet
   * mysql
 
 ## License
