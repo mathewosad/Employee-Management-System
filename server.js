@@ -2,7 +2,14 @@
 const mysql = require("mysql");
 
 const inquirer = require("inquirer");
-require("console.table");
+// This app creates a table of all departments, roles, and employees.
+const figlet = require("figlet");
+
+//figlet application name
+figlet("Employee \n \n Manager", (err, data) => {
+    if (err) throw err;
+    console.log(data);
+})
 
 //this create the connection for database
 const connection = mysql.createConnection({
@@ -71,73 +78,36 @@ function start() {
                 break;
         }
     });
-}
-
-function addDept() {
- 
-    inquirer.prompt({
-        type: 'input',
-        message: 'Enter new department:',
-        name: 'addDept'
-  
-    }).then(function (answer) {
-        connection.query(`INSERT INTO department (name) VALUES ('${answer.addDept}')`)
-      startPrompts();
-    })  
 };
 
-
-function addRole() {
-
-    inquirer.prompt([
-        {
-        type: 'input',
-        message: 'Which department?',
-        name: 'addRoleDept'
-    }
-
-]).then(function (answer) {
-
-        db.query(`
-        
-        INSERT INTO role (department_id) VALUES ('${answer.addRoleDept}');
-            `)
-            startPrompts();
-    })
-};
-
+// function to View all departments,
 function viewDeparts() {
-    connection.query('SELECT * FROM department;', function (err, res) {
+    connection.query("SELECT * FROM department", (err, data) => {
         if (err) throw err;
         console.log("Displaying all departments:");
-        console.table(res);
-        startPrompts();
-    })
+        console.table(data);
+        start();
+    });
 };
 
-
+// function to View all roles
 function viewRoles() {
-    connection.query('SELECT * FROM role;', function (err, res) {
+    connection.query("SELECT * FROM role", (err, data) => {
         if (err) throw err;
-        console.log("Displaying all Roles:");
-        console.table(res);
-       startPrompts();
-    })
+        console.log("Displaying all roles:");
+        console.table(data);
+        start();
+    });
 };
 
+// function to View all employees
 function viewEmps() {
-
-    connection.query('SELECT * FROM employee;', function (err,res) {
+    connection.query("SELECT * FROM employee", (err, data) => {
         if (err) throw err;
-        console.log("Displaying all Employees:");
-        console.table(res);
-        startPrompts();
-    })
-};
-
-function Esc() {
-    connection.end();
-    console.log('Connection to employee_db terminated.');
+        console.log("Displaying all employees:");
+        console.table(data);
+        start();
+    });
 };
 
 // // function to Update employee role
