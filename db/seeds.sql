@@ -1,6 +1,4 @@
 -- -Create seeds for system- 
-USE employee_management_db;
-
 INSERT INTO department(name)
 VALUES
     ("Business"),
