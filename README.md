@@ -20,7 +20,7 @@ A command line application Content Management Systems for managing a company's e
 
 * Follow the prompts to finish application
 
-* [Video Demo]()
+* [Video Demo](https://drive.google.com/file/d/1kYJozzFXw-wH7k0LTc-FBI1bRcT49EPJ/view)
 
 * Website
   * [Github](https://github.com/mathewosad/Employee-Management-System)
