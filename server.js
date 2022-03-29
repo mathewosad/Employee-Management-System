@@ -2,7 +2,7 @@
 const mysql = require("mysql");
 
 const inquirer = require("inquirer");
-
+require("console.table");
 
 //this create the connection for database
 const connection = mysql.createConnection({
@@ -37,7 +37,7 @@ function start() {
             "Exit"
         ]
     }).then((answer) => {
-        switch (answer.action) {
+        switch (answer.promptMenu) {
             case "View all departments":
                 viewDeparts();
                 break;
@@ -73,6 +73,38 @@ function start() {
     });
 }
 
+function addDept() {
+ 
+    inquirer.prompt({
+        type: 'input',
+        message: 'Enter new department:',
+        name: 'addDept'
+  
+    }).then(function (answer) {
+        connection.query(`INSERT INTO department (name) VALUES ('${answer.addDept}')`)
+      startPrompts();
+    })  
+};
+
+
+function addRole() {
+
+    inquirer.prompt([
+        {
+        type: 'input',
+        message: 'Which department?',
+        name: 'addRoleDept'
+    }
+
+]).then(function (answer) {
+
+        db.query(`
+        
+        INSERT INTO role (department_id) VALUES ('${answer.addRoleDept}');
+            `)
+            startPrompts();
+    })
+};
 
 function viewDeparts() {
     connection.query('SELECT * FROM department;', function (err, res) {
