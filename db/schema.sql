@@ -13,8 +13,8 @@ CREATE TABLE role (
     id INTEGER NOT NULL AUTO_INCREMENT,
     title VARCHAR(30) NOT NULL,
     salary DECIMAL(9,2),
-    department_id INTEGER,
-    PRIMARY Key (id)
+    FOREIGN KEY (department_id) REFERENCES department(id)
+    ON DELETE CASCADE
 );
 
 
@@ -23,9 +23,11 @@ CREATE TABLE employee (
     first_name VARCHAR(30),
     last_name VARCHAR(30),
     role_id INTEGER,
-    manager_id INTEGER,
-    PRIMARY Key (id),
+    FOREIGN KEY (role_id) REFERENCES role(id),
+    manager_id INT,
     FOREIGN KEY (manager_id) REFERENCES employee(id)
+    ON UPDATE CASCADE
+    ON DELETE SET NULL
 );
 
 -- This is the seed data for the system.
