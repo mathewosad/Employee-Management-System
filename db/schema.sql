@@ -17,6 +17,7 @@ CREATE TABLE role (
     PRIMARY Key (id)
 );
 
+
 CREATE TABLE employee (
     id INTEGER NOT NULL AUTO_INCREMENT,
     first_name VARCHAR(30),
@@ -27,10 +28,12 @@ CREATE TABLE employee (
     FOREIGN KEY (manager_id) REFERENCES employee(id)
 );
 
+-- This is the seed data for the system.
 SELECT name 
 FROM department 
 LEFT JOIN role 
 ON department.id = role.department_id;
+
 
 SELECT title, salary, department_id 
 FROM role 
