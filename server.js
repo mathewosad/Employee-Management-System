@@ -1,5 +1,6 @@
 //dependencies
 const mysql = require("mysql");
+
 const inquirer = require("inquirer");
 
 
@@ -18,10 +19,9 @@ connection.connect(err => {
     start();
 });
 
-// Add departments, roles, employees
-// View departments, roles, employees
-// Update employee roles
+
 function start() {
+    // start the app
     inquirer.prompt({
         name: "action",
         type: "list",
@@ -86,6 +86,7 @@ function viewDepts() {
 
 // function to View all roles
 function viewRoles() {
+    // view all roles
     connection.query("SELECT * FROM role", (err, data) => {
         if (err) throw err;
         console.log("Displaying all roles:");
@@ -106,6 +107,7 @@ function viewEes() {
 
 // function to Add a department
 function addDept() {
+    // add all departments to an array
     inquirer.prompt([
         {
             name: "department",
@@ -135,6 +137,7 @@ function addDept() {
 }
 // function to Add a role; prompt role, salary and department
 function addRole() {
+    // add all departments to an array
     const sql = "SELECT * FROM department";
     connection.query(sql, (err, results) => {
         if (err) throw err;
@@ -202,6 +205,7 @@ function addRole() {
 
 // function to Add an employee
 function addEe() {
+    // get all departments
     const sql = "SELECT * FROM employee, role";
     connection.query(sql, (err, results) => {
         if (err) throw err;
@@ -272,6 +276,7 @@ function addEe() {
 
 // function to Update employee role
 function update() {
+    // get all employees
     connection.query("SELECT * FROM employee, role", (err, results) => {
         if (err) throw err;
 
