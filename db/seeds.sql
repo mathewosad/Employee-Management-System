@@ -3,10 +3,10 @@ USE employee_management_db;
 
 INSERT INTO department(name)
 VALUES
-    ("Sales"),
-    ("Engineer"),
-    ("Finance"),
-    ("Legal");
+    ("Business"),
+    ("Engineering"),
+    ("Finances"),
+    ("Legal D");
 
 INSERT INTO role(title, salary, department_id)
 VALUES
