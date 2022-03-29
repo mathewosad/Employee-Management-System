@@ -75,7 +75,9 @@ function start() {
 
 
 function viewDeparts() {
-    db.query('SELECT * FROM department;', function (err,res) {
+    connection.query('SELECT * FROM department;', function (err, res) {
+        if (err) throw err;
+        console.log("Displaying all departments:");
         console.table(res);
         startPrompts();
     })
@@ -83,7 +85,9 @@ function viewDeparts() {
 
 
 function viewRoles() {
-    db.query('SELECT * FROM role;', function (err, res) {
+    connection.query('SELECT * FROM role;', function (err, res) {
+        if (err) throw err;
+        console.log("Displaying all Roles:");
         console.table(res);
        startPrompts();
     })
@@ -91,14 +95,16 @@ function viewRoles() {
 
 function viewEmps() {
 
-    db.query('SELECT * FROM employee;', function (err,res) {
+    connection.query('SELECT * FROM employee;', function (err,res) {
+        if (err) throw err;
+        console.log("Displaying all Employees:");
         console.table(res);
         startPrompts();
     })
 };
 
 function Esc() {
-    db.end();
+    connection.end();
     console.log('Connection to employee_db terminated.');
 };
 
