@@ -1,46 +1,34 @@
-DROP DATABASE IF EXISTS employee_management_db;
-CREATE DATABASE employee_management_db;
 
-USE employee_management_db;
+-- THIS CREATES THE DATABASE
 
-CREATE TABLE department (
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    name VARCHAR(30) NOT NULL,
-    PRIMARY KEY (id)
+DROP DATABASE IF EXISTS employee_db;
+CREATE DATABASE employee_db;
+
+USE employee_db;
+
+CREATE TABLE departments (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL
 );
 
-CREATE TABLE role (
-    id INTEGER NOT NULL AUTO_INCREMENT,
+CREATE TABLE roles (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(30) NOT NULL,
-    salary DECIMAL(9,2),
-    department_id INTEGER,
-    PRIMARY Key (id)
+    salary DECIMAL NOT NULL,
+    department_id INT,
+    FOREIGN KEY (department_id)
+    REFERENCES departments(id)
+    ON DELETE SET NULL
 );
 
-CREATE TABLE employee (
-    id INTEGER NOT NULL AUTO_INCREMENT,
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
-    role_id INTEGER,
-    manager_id INTEGER,
-    PRIMARY Key (id),
-    FOREIGN KEY (manager_id) REFERENCES employee(id)
+CREATE TABLE employees (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  first_name VARCHAR(30),
+  last_name VARCHAR(30),
+  manager_id INT,
+  role_id INT NOT NULL,
+  FOREIGN KEY (role_id) REFERENCES roles(id)
+  ON DELETE CASCADE,
+  FOREIGN KEY (manager_id) REFERENCES employees(id)
+  ON DELETE SET NULL
 );
-
--- This is the seed data for the system.
--- SELECT name 
--- FROM department 
--- LEFT JOIN role 
--- ON department.id = role.department_id;
-
-
--- SELECT title, salary, department_id 
--- FROM role 
--- LEFT JOIN department 
--- ON role.department_id = department.id;
-
--- SELECT first_name, last_name, role_id, manager_id 
--- FROM employee 
--- JOIN role 
--- ON employee.role_id = role.department_id;
-

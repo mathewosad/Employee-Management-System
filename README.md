@@ -20,7 +20,7 @@ A command line application Content Management Systems for managing a company's e
 
 * Follow the prompts to finish application
 
-* [Video Demo](https://drive.google.com/file/d/1kYJozzFXw-wH7k0LTc-FBI1bRcT49EPJ/view)
+* [Video Demo](https://drive.google.com/file/d/1ziwq3FtLzJMeo6ybGpDQfz-ULEZ3D_-r/view)
 
 * Website
   * [Github](https://github.com/mathewosad/Employee-Management-System)
@@ -34,6 +34,14 @@ A command line application Content Management Systems for managing a company's e
   * Inquirer
   * mysql
 
+
+
+* Screenshot
+  * [Demo] 
+  
+  ![](./Assets/Employee1.JPG)
+   ![](./Assets/employee2.JPG)
+    ![](./Assets/Employee3.JPG)
 ## License
 
   Copyright (c) Mathew Osad. All rights reserved.
